@@ -27,7 +27,7 @@ form.addEventListener("submit", (e) => {
       const li = document.createElement("li");
       li.classList.add("city");
       const markup = `
-        <span class="close-btn">&times;</span>
+        <span class="close-btn" style="align-right">X</span>
         <h2 class="city-name" data-name="${name},${sys.country}">
           <span>${name}</span>
           <sup>${sys.country}</sup>
@@ -40,6 +40,12 @@ form.addEventListener("submit", (e) => {
       `;
       li.innerHTML = markup;
       list.appendChild(li);
+      list.addEventListener("click", (e) => {
+        if (e.target.classList.contains("close-btn")) {
+          const listItem = e.target.parentElement;
+          list.removeChild(listItem);
+        }
+      });
 
       // Add city to array
       cities.push(inputVal.toLowerCase());
