@@ -5,10 +5,18 @@ const input = document.querySelector(".top-banner input");
 const msg = document.querySelector(".top-banner .msg");
 const list = document.querySelector(".ajax-section .cities");
 
+let cities = [];
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputVal = input.value;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${weatherApi}&units=metric`;
+
+  // Check if city is already in the list
+  if (cities.includes(inputVal.toLowerCase())) {
+    msg.textContent = "City is already in the list";
+    return;
+  }
 
   fetch(url)
     .then((response) => response.json())
@@ -19,6 +27,7 @@ form.addEventListener("submit", (e) => {
       const li = document.createElement("li");
       li.classList.add("city");
       const markup = `
+        <span class="close-btn">&times;</span>
         <h2 class="city-name" data-name="${name},${sys.country}">
           <span>${name}</span>
           <sup>${sys.country}</sup>
@@ -31,6 +40,9 @@ form.addEventListener("submit", (e) => {
       `;
       li.innerHTML = markup;
       list.appendChild(li);
+
+      // Add city to array
+      cities.push(inputVal.toLowerCase());
     })
     .catch(() => {
       msg.textContent = "Please check input, city not found";
