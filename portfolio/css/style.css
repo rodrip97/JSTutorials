@@ -1,0 +1,16 @@
+
+body{
+    background-color: rgb(3, 2, 48);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    padding: 0xp;
+    margin: 0px;
+}
+
+section{
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
