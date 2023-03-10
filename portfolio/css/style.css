@@ -3,7 +3,7 @@ body{
     background-color: rgb(3, 2, 48);
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    padding: 0xp;
+    padding: 0px;
     margin: 0px;
 }
 
@@ -14,3 +14,30 @@ section{
     min-height: 100vh;
 }
 
+.slider{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+@media(perefers-reduced-motion){
+    .slider{
+        transition: none;
+    }
+}
+
+.show{
+    opacity: 1;
+    filter:blur(0);
+    transform: translateX(0);
+}
+.logos{
+    display: flex;
+}
+
+.logo:nth-child(2){
+    transition-delay: 200ms;
+}
+.logo:nth-child(3){
+    transition-delay: 4000ms;
+}
